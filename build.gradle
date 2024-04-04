@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'application'
+    id("com.github.johnrengelman.shadow") version "8.1.1"
+}
+
+group = 'io.ib67'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+compileJava.options.getCompilerArgs() << "--enable-preview"
+
+application {
+    mainClass = "SuckCli"
+    applicationDefaultJvmArgs = ['--enable-preview']
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'info.picocli:picocli:4.7.5'
+}
+
+test {
+    useJUnitPlatform()
+}
